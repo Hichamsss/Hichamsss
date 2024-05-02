@@ -16,17 +16,18 @@
 		        <div>
 		        	<label>Firstname:</label>
 		        	<input type="text" th:field="*{firstname}">
-		        	<p th:if="${#fields.hasErrors('firstname')}"
+		<p th:if="${#fields.hasErrors('firstname')}"
                			th:errors="*{firstname}" th:errorclass="fieldError"></p>
 		        </div>
 		        <div>
 		        	<label>Lastname:</label>
 		        	<input type="text" th:field="*{lastname}">
-		        	<p th:if="${#fields.hasErrors('lastname')}"
+		<p th:if="${#fields.hasErrors('lastname')}"
                			th:errors="*{lastname}" th:errorclass="fieldError"></p>
 		        </div>
 		        <div>
-		        	<button type="submit" th:text="Ajouter">Ajouter</button>
+		        	<button type="submit" th:text="Modifier">Modifier</button>
+		        	<button type="reset" th:text="Réinitialiser">Réinitialiser</button>
 		        	<a th:href="@{/artists}">Annuler</a>
 		        </div>
 		    </form>

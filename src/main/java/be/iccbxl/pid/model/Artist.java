@@ -3,6 +3,7 @@ package be.iccbxl.pid.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import be.iccbxl.pid.model.Artist;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -88,6 +89,10 @@ public class Artist {
 		
 		return this;
 	}
+	  public static Artist createInstance() {
+	        return new Artist();
+	    }
+
 
 	@Override
 	public String toString() {
