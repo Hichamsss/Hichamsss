@@ -10,8 +10,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import be.iccbxl.pid.model.Artist;
 import be.iccbxl.pid.model.ArtistService;
-
 import org.springframework.validation.BindingResult;
+
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @Controller
