@@ -11,17 +11,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
-
-
-
-
-
-@Entity
+import jakarta.validation.constraints.Size;@Entity
 @Table(name="artists")
 public class Artist {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotEmpty(message = "The firstname must not be empty.")
@@ -29,8 +23,7 @@ public class Artist {
 	private String firstname;
 	
 	@NotEmpty(message = "The lastname must not be empty.")
-	@Size(min=2, max=60, message = "The firstname must be between 2 and 60 characters long.")
-
+	@Size(min=2, max=60, message = "The lastname must be between 2 and 60 characters long.")
 	private String lastname;
 	
 	@ManyToMany(mappedBy = "artists")
@@ -46,7 +39,6 @@ public class Artist {
 	public Long getId() {
 		return id;
 	}
-	
 
 	public void setId(Long id) {
 		this.id = id;
@@ -89,10 +81,6 @@ public class Artist {
 		
 		return this;
 	}
-	  public static Artist createInstance() {
-	        return new Artist();
-	    }
-
 
 	@Override
 	public String toString() {
