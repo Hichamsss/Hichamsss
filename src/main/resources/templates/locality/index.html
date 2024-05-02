@@ -10,10 +10,10 @@
 	        <h1 th:text="${title}">Liste des localités</h1>
 	
 	        <ul th:unless="${#lists.isEmpty(localities)}">
-                	<li th:each="locality : ${localities}">
-		    <span th:text="|${locality.postalCode} ${locality.locality}|">1000 Bruxelles</span>
-	    <a th:href="@{/localities/{id}(id=${locality.id})}">View</a>
-	</li>
+                <li th:each="locality : ${localities}">
+	     			<span th:text="|${locality.postalCode} ${locality.locality}|">1000 Bruxelles</span>
+	     			<a th:href="@{/localities/{id}(id=${locality.id})}">View</a>
+	     		</li>
 	        </ul>
 	    </div>
 	</div>

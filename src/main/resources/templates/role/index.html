@@ -10,10 +10,10 @@
 	        <h1 th:text="${title}">Liste des rôles</h1>
 	
 	        <ul th:unless="${#lists.isEmpty(roles)}">
-                	<li th:each="role : ${roles}">
-			<span th:text="${role.role}">Admin</span>
-			<a th:href="@{/roles/{id}(id=${role.id})}">View</a>
-		</li>
+				<li th:each="role : ${roles}">
+                	<span th:text="${role.role}">Admin</span>
+                	<a th:href="@{/roles/{id}(id=${role.id})}">View</a>
+                </li>
 	        </ul>
 	    </div>
 	</div>

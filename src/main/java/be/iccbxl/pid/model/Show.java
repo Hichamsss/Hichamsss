@@ -4,22 +4,21 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Column;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 import com.github.slugify.Slugify;
 
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import lombok.Data;
-
-@Data
 @Entity
 @Table(name="shows")
 public class Show {
@@ -60,11 +59,10 @@ public class Show {
 	
 	@OneToMany(targetEntity=Representation.class, mappedBy="show")
 	private List<Representation> representations = new ArrayList<>();
-	
+
 	@ManyToMany(mappedBy = "shows")
 	private List<ArtistType> artistTypes = new ArrayList<>();
-
-
+	
 	public Show() { }
 	
 	public Show(String title, String description, String posterUrl, Location location, boolean bookable,
@@ -82,11 +80,10 @@ public class Show {
 		this.updatedAt = null;
 	}
 
-
 	public Long getId() {
 		return id;
 	}
-
+	
 	public String getSlug() {
 		return slug;
 	}
@@ -128,7 +125,7 @@ public class Show {
 	}
 
 	public void setLocation(Location location) {
-		this.location.removeShow(this);	//déménager de l’ancien lieu
+		this.location.removeShow(this);		//déménager de l’ancien lieu
 		this.location = location;
 		this.location.addShow(this);		//emménager dans le nouveau lieu
 	}
@@ -184,7 +181,14 @@ public class Show {
 		
 		return this;
 	}
-	
+
+	/**
+     * Get the performances (artists in a type of collaboration) for the show
+     */
+	public List<ArtistType> getArtistTypes() {
+		return artistTypes;
+	}
+
 	public Show addArtistType(ArtistType artistType) {
 		if(!this.artistTypes.contains(artistType)) {
 			this.artistTypes.add(artistType);
@@ -202,16 +206,14 @@ public class Show {
 		
 		return this;
 	}
-
-
+	
 	@Override
 	public String toString() {
 		return "Show [id=" + id + ", slug=" + slug + ", title=" + title 
 			+ ", description=" + description + ", posterUrl=" + posterUrl + ", location=" 
 			+ location + ", bookable=" + bookable + ", price=" + price
-			+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt 
+			+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
 			+ ", representations=" + representations.size() + "]";
 	}
 	
 }
-

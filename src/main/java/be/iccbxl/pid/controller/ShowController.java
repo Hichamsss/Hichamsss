@@ -15,49 +15,42 @@ import be.iccbxl.pid.model.Artist;
 import be.iccbxl.pid.model.ArtistType;
 import be.iccbxl.pid.model.Show;
 import be.iccbxl.pid.model.ShowService;
-import lombok.Data;
 
-@Data
 @Controller
 public class ShowController {
 	@Autowired
 	ShowService service;
 
 	@GetMapping("/shows")
-    	public String index(Model model) {
+    public String index(Model model) {
 		List<Show> shows = service.getAll();
-
+		
 		model.addAttribute("shows", shows);
 		model.addAttribute("title", "Liste des spectacles");
 		
-        	return "show/index";
-    	}
+        return "show/index";
+    }
 	
 	@GetMapping("/shows/{id}")
-   	 public String show(Model model, @PathVariable("id") String id) {
+    public String show(Model model, @PathVariable("id") String id) {
 		Show show = service.get(id);
 
-		//Récupérer les artistes du spectacle et les grouper par type
+        //Récupérer les artistes du spectacle et les grouper par type
         Map<String,ArrayList<Artist>> collaborateurs = new TreeMap<>();
         
         for(ArtistType at : show.getArtistTypes()) {
-            String type = at.getType().getType();
-        	
-            if(collaborateurs.get(type) == null) {
-            	collaborateurs.put(type, new ArrayList<>());
+            if(collaborateurs.get(at.getType().getType()) == null) {
+            	collaborateurs.put(at.getType().getType(), new ArrayList<>());
             }
             
-            collaborateurs.get(type).add(at.getArtist());
+            collaborateurs.get(at.getType().getType()).add(at.getArtist());
         }
-      
+        
         model.addAttribute("collaborateurs", collaborateurs);
-
-		
-		model.addAttribute("show", show);
+        model.addAttribute("show", show);
 		model.addAttribute("title", "Fiche d'un spectacle");
 		
-        	return "show/show";
-    	}
+        return "show/show";
+    }
 
 }
-
