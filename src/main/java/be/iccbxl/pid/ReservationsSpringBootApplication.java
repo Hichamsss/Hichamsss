@@ -12,4 +12,7 @@ public class ReservationsSpringBootApplication {
 	}
 
 }
+<<<<<<< HEAD
 //TEST//
+=======
+>>>>>>> a469554470ea18d7916a0d71a3c3b69235b9ed36

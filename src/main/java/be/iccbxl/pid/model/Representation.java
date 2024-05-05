@@ -44,7 +44,11 @@ public class Representation {
 		  name = "reservation", 
 		  joinColumns = @JoinColumn(name = "representation_id"), 
 		  inverseJoinColumns = @JoinColumn(name = "user_id"))
+<<<<<<< HEAD
 	private List<Uuser> users = new ArrayList<>();
+=======
+	private List<User> users = new ArrayList<>();
+>>>>>>> a469554470ea18d7916a0d71a3c3b69235b9ed36
 
 	public Long getId() {
 		return id;
@@ -78,7 +82,11 @@ public class Representation {
 		this.location = location;
 	}
 
+<<<<<<< HEAD
 	public void setUsers(List<Uuser> users) {
+=======
+	public void setUsers(List<User> users) {
+>>>>>>> a469554470ea18d7916a0d71a3c3b69235b9ed36
 		this.users = users;
 	}
 
@@ -86,11 +94,19 @@ public class Representation {
 	
 	//…
 	
+<<<<<<< HEAD
 	public List<Uuser> getUsers() {
 		return users;
 	}
 
 	public Representation addUser(Uuser user) {
+=======
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public Representation addUser(User user) {
+>>>>>>> a469554470ea18d7916a0d71a3c3b69235b9ed36
 		if(!this.users.contains(user)) {
 			this.users.add(user);
 			user.addRepresentation(this);
@@ -99,7 +115,11 @@ public class Representation {
 		return this;
 	}
 	
+<<<<<<< HEAD
 	public Representation removeUser(Uuser user) {
+=======
+	public Representation removeUser(User user) {
+>>>>>>> a469554470ea18d7916a0d71a3c3b69235b9ed36
 		if(this.users.contains(user)) {
 			this.users.remove(user);
 			user.getRepresentations().remove(this);

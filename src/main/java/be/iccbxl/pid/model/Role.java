@@ -27,7 +27,11 @@ public class Role {
 		  name = "user_role", 
 		  joinColumns = @JoinColumn(name = "role_id"), 
 		  inverseJoinColumns = @JoinColumn(name = "user_id"))
+<<<<<<< HEAD
 	private List<Uuser> users = new ArrayList<>();
+=======
+	private List<User> users = new ArrayList<>();
+>>>>>>> a469554470ea18d7916a0d71a3c3b69235b9ed36
 	
 	protected Role() { }
 	
@@ -47,11 +51,19 @@ public class Role {
 		this.role = role;
 	}
 
+<<<<<<< HEAD
 	public List<Uuser> getUsers() {
 		return users;
 	}
 
 	public Role addUser(Uuser user) {
+=======
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public Role addUser(User user) {
+>>>>>>> a469554470ea18d7916a0d71a3c3b69235b9ed36
 		if(!this.users.contains(user)) {
 			this.users.add(user);
 			user.addRole(this);
@@ -60,7 +72,11 @@ public class Role {
 		return this;
 	}
 	
+<<<<<<< HEAD
 	public Role removeUser(Uuser user) {
+=======
+	public Role removeUser(User user) {
+>>>>>>> a469554470ea18d7916a0d71a3c3b69235b9ed36
 		if(this.users.contains(user)) {
 			this.users.remove(user);
 			user.getRoles().remove(this);
