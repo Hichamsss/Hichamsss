@@ -7,29 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UuserService {
 	@Autowired
-	private UserRepository repository;
+	private UuserRepository repository;
 	
-	public List<User> getAllUsers() {
-		List<User> users = new ArrayList<>();
+	public List<Uuser> getAllUsers() {
+		List<Uuser> users = new ArrayList<>();
 		
 		repository.findAll().forEach(users::add);
 		
 		return users;
 	}
 	
-	public User getUser(String id) {
+	public Uuser getUser(String id) {
 		int indice = Integer.parseInt(id);
 		
 		return repository.findById(indice);
 	}
 
-	public void addUser(User user) {
+	public void addUser(Uuser user) {
 		repository.save(user);
 	}
 
-	public void updateUser(String id, User user) {
+	public void updateUser(String id, Uuser user) {
 		repository.save(user);
 	}
 

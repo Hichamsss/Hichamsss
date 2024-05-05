@@ -3,7 +3,6 @@ package be.iccbxl.pid.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +12,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User {
+public class Uuser{
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -21,7 +21,7 @@ public class User {
 	private String password;
 	private String firstname;
 	private String lastname;
-private String email;
+	private String email;
 	private String langue;
 	private LocalDateTime created_at;
 	
@@ -32,9 +32,9 @@ private String email;
 	private List<Representation> representations = new ArrayList<>();
 
 
-	protected User() {}
+	protected Uuser() {}
 
-	public User(String login, String firstname, String lastname) {
+	public Uuser(String login, String firstname, String lastname) {
 		this.login = login;
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -101,7 +101,7 @@ private String email;
 		return created_at;
 	}
 	
-	public User addRole(Role role) {
+	public Uuser addRole(Role role) {
 		if(!this.roles.contains(role)) {
 			this.roles.add(role);
 			role.addUser(this);
@@ -110,7 +110,7 @@ private String email;
 		return this;
 	}
 	
-	public User removeRole(Role role) {
+	public Uuser removeRole(Role role) {
 		if(this.roles.contains(role)) {
 			this.roles.remove(role);
 			role.getUsers().remove(this);
@@ -123,7 +123,7 @@ private String email;
 		return representations;
 	}
 
-public User addRepresentation(Representation representation) {
+public Uuser addRepresentation(Representation representation) {
 		if(!this.representations.contains(representation)) {
 			this.representations.add(representation);
 			representation.addUser(this);
@@ -132,7 +132,7 @@ public User addRepresentation(Representation representation) {
 		return this;
 	}
 	
-	public User removeRepresentation(Representation representation) {
+	public Uuser removeRepresentation(Representation representation) {
 		if(this.representations.contains(representation)) {
 			this.representations.remove(representation);
 			representation.getUsers().remove(this);

@@ -44,7 +44,7 @@ public class Representation {
 		  name = "reservation", 
 		  joinColumns = @JoinColumn(name = "representation_id"), 
 		  inverseJoinColumns = @JoinColumn(name = "user_id"))
-	private List<User> users = new ArrayList<>();
+	private List<Uuser> users = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -78,7 +78,7 @@ public class Representation {
 		this.location = location;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(List<Uuser> users) {
 		this.users = users;
 	}
 
@@ -86,11 +86,11 @@ public class Representation {
 	
 	//…
 	
-	public List<User> getUsers() {
+	public List<Uuser> getUsers() {
 		return users;
 	}
 
-	public Representation addUser(User user) {
+	public Representation addUser(Uuser user) {
 		if(!this.users.contains(user)) {
 			this.users.add(user);
 			user.addRepresentation(this);
@@ -99,7 +99,7 @@ public class Representation {
 		return this;
 	}
 	
-	public Representation removeUser(User user) {
+	public Representation removeUser(Uuser user) {
 		if(this.users.contains(user)) {
 			this.users.remove(user);
 			user.getRepresentations().remove(this);
